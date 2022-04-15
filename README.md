@@ -10,6 +10,10 @@ Alongside the Terraform files, a python-flask project [flask-docker](https://git
 
 ## How to run the Terraform module?
 - The module accepts either of the Docker images: _flask-docker:final_ or  _nginx-docker:final_
+- Currently one and only accepted network configuration (restricted via _validate_ instructions) is of such form: 
+	
+	> _localhost:8081_
+	
 - The Terraform module comes with predefined _input_variables_, located in _terraform-docker/terraform.tfvars_. One might adjust them before executing the module.
 
 ```
