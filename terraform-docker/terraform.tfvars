@@ -1,5 +1,5 @@
-image_name 		 = "nginx-docker:final"
+image_name = "nginx-docker:final"
 network_config = {
 	external_port = 8081
-	url						= "localhost"
+	url	= "localhost"
 }
