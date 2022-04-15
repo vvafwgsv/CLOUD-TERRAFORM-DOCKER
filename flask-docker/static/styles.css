@@ -1,0 +1,25 @@
+
+html{
+	height: 100%;
+}
+body {
+	margin:  auto;
+	min-height: 100vh;
+	background-color: #61E179;
+	display: flex;
+	align-content: center;
+	justify-content: center;
+}
+div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	flex-direction: column;
+}
+h1{
+	color: black;
+}
+h3{
+	color: beige;
+}
