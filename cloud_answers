@@ -7,7 +7,8 @@
 	Opensourceness is also a plus.
 
 ● Do you know any tools that can be used instead of Docker to build and run containers?
-	While gathering information about Docker I came across a few such tools. One example is Podman, which, unlike Docker, is a daemonless container orchestrator, making it less prone to propagate daemon failure to supervised containers. 
+	While gathering information about Docker I came across a few such tools. One example is Podman, which, unlike Docker,
+	is a daemonless container orchestrator, making it less prone to propagate daemon failure to supervised containers. 
 
 	Building and running containers may not require an all-in-one super tool.
 	One might utilize few technologies, which chained together, would deliver a firm pipeline allowing for container creation and run.
@@ -15,12 +16,22 @@
 ● How would you deploy this sample hello world project in Kubernetes using Terraform instead of running this locally on your machine?
 	The first thing would be chosing a cloud provider to deploy a Kubernetes cluster and creating remote workspace via a separate Terraform module.
 
-	The Terraform {} block in main.tf would require redefining to enable remote execution (backend = "remote"), and providing path to execution environment via workspace {} block, created prior to this step. Additional provider "kubernetes" {} block has to be added.
+	The Terraform {} block in main.tf would require redefining to enable remote execution (backend = "remote"),
+	and providing path to execution environment via workspace {} block, created prior to this step.
+	Additional provider "kubernetes" {} block has to be added.
 	
-	Then a "kubernetes_deployment" resource {} block would have to be created (in a separate file relative to Terraform root, deployment.tf), so as to define parameters needed to enable a Kubernetes deployment for a dockerized application, i.e. specifying the container data: the docker image and internal port to the app.
+	Then a "kubernetes_deployment" resource {} block would have to be created (in a separate file relative to Terraform root, deployment.tf),
+	so as to define parameters needed to enable a Kubernetes deployment for a dockerized application,
+	i.e. specifying the container data: the docker image and internal port to the app.
 
 	Next step is creating service.tf file to host "kubernetes_service" {} block, which would be responsible for an external exposure of the app. 
 
 	Finally, output.tf to deliver endpoint address to access the app and cluster (workspace) name to CLI. 
 
-	The deployment would be as follows: create (plan, apply) cluster via a separate Terraform module -> init Terraform module responsible for deployment of docker app, authenticate to the cluster, plan the infrastructure creation (defined in deployments.tf, services.tf), hit apply to create. Upon destruction of this infrastructure one must remember the running remote cluster that might generate additional costs in an idle state (terminating that resources via 'terraform destroy' in an adequate Terraform root would be advised).
+	The deployment would be as follows:
+	
+	Create (plan, apply) cluster via a separate Terraform module -> init Terraform module responsible for deployment of docker app,
+	authenticate to the cluster, plan the infrastructure creation (defined in deployments.tf, services.tf),
+	hit apply to create.
+	Upon destruction of this infrastructure one must remember the running remote cluster that might generate additional costs in an idle state
+	(terminating that resources via 'terraform destroy' in an adequate Terraform root would be advised).
