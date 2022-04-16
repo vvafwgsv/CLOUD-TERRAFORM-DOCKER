@@ -68,7 +68,9 @@ The Terraform module execution might be automated (Interactive mode suppressed, 
 
 I believe that _main.tf_ might be of greater clarity if _variables_ {} declaration blocks were placed in a separate file. In fact, other components could granted with own files: _providers.tf_, _output.tf_.
 
-Moreover _description_ and _error_message_ params could be more adjusted to describe the context in a more precise manner. 
+__Edit__: separated _variables.tf_ in branch _dev_
+
+Moreover _description_ and _error_message_ params could be better adjusted to describe the context in a more precise manner. 
 
 ### Docker
 _flask-docker/Dockerfile_ might undergo further optimization, i.e. multi-staging, which was attempted (reducing size of pulled image, clearing cache, stripping _venv_ of any redundant files), yet rendered ineffective.
