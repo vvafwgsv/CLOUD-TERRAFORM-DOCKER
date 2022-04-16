@@ -66,7 +66,7 @@ port. However it could be adjusted to accept IPv4/6 (regex validation) host addr
 
 The Terraform module execution might be automated (Interactive mode suppressed, -out configuration)
 
-I believe that _main.tf_ might be of greater clarity if _variables_ {} declaration blocks were placed in a separate file.
+I believe that _main.tf_ might be of greater clarity if _variables_ {} declaration blocks were placed in a separate file. In fact, other components could granted with own files: _providers.tf_, _output.tf_.
 
 Moreover _description_ and _error_message_ params could be more adjusted to describe the context in a more precise manner. 
 
